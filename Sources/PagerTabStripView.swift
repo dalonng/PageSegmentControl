@@ -27,7 +27,6 @@ public struct HorizontalContainerEdge: OptionSet, Sendable {
   public static let both: HorizontalContainerEdge = [.left, .right]
 }
 
-@available(iOS 16.0, *)
 public struct PagerTabStripView<SelectionType, Content>: View where SelectionType: Hashable & Sendable, Content: View {
   private var content: () -> Content
   private var swipeGestureEnabled: Binding<Bool>
@@ -47,9 +46,7 @@ public struct PagerTabStripView<SelectionType, Content>: View where SelectionTyp
   }
 
   @MainActor public var body: some View {
-    WrapperPagerTabStripView(swipeGestureEnabled: swipeGestureEnabled,
-                             edgeSwipeGestureDisabled: edgeSwipeGestureDisabled,
-                             selection: selection, content: content)
+    WrapperPagerTabStripView(swipeGestureEnabled: swipeGestureEnabled, edgeSwipeGestureDisabled: edgeSwipeGestureDisabled, selection: selection, content: content)
   }
 }
 

@@ -5,7 +5,7 @@
 //  Copyright © 2022 Xmartlabs SRL. All rights reserved.
 //
 
-import PagerTabStripView
+import PageSegmentControl
 import SwiftUI
 
 private struct PageItem: Identifiable {
@@ -18,38 +18,43 @@ private struct PageItem: Identifiable {
 
 struct TwitterView: View {
   @State var selection = 4
-  @State var toggle = true
   @State var swipeGestureEnabled = true
 
   private var items = [
-    PageItem(tag: 1, title: "First big width", posts: TweetsModel().posts),
-    PageItem(tag: 2, title: "Short", posts: TweetsModel().posts),
-//    PageItem(tag: 3, title: "Medium width", posts: TweetsModel().posts, withDescription: false),
-//    PageItem(tag: 4, title: "Second big width", posts: TweetsModel().posts),
-//    PageItem(tag: 5, title: "Second Medium", posts: TweetsModel().posts, withDescription: false),
-//    PageItem(tag: 6, title: "Mini", posts: TweetsModel().posts),
+    PageItem(tag: 1, title: "People", posts: TweetsModel().posts),
+    PageItem(tag: 2, title: "Request", posts: TweetsModel().posts),
   ]
 
   @MainActor var body: some View {
     PagerTabStripView(swipeGestureEnabled: $swipeGestureEnabled, selection: $selection) {
-      ForEach(toggle ? items : items.reversed().dropLast(5), id: \.title) { item in
+      ForEach(items, id: \.title) { item in
         PostsList(items: item.posts, withDescription: item.withDescription)
           .pagerTabItem(tag: item.tag) {
-            TabBarView(tag: item.tag, title: item.title, selection: $selection)
+            TabBarView(
+              tag: item.tag,
+              title: item.title,
+              selection: $selection
+            )
+            .background(Color.red)
           }
       }
     }
-    .pagerTabStripViewStyle(.scrollableBarButton(tabItemSpacing: 15, tabItemHeight: 50, indicatorViewHeight: 3, indicatorView: {
-      Rectangle().fill(.blue).cornerRadius(5)
-    }))
-    .navigationBarItems(trailing: HStack {
-      Button("Refresh") {
-        toggle.toggle()
+    .pagerTabStripViewStyle(
+      .barButton(
+        tabItemSpacing: 15,
+        tabItemHeight: 50,
+        indicatorViewHeight: 3,
+        indicatorView: {
+          Rectangle().fill(.blue).cornerRadius(5)
+        }
+      )
+    )
+    .navigationBarItems(trailing:
+      HStack {
+        Button(swipeGestureEnabled ? "Swipe On" : "Swipe Off") {
+          swipeGestureEnabled.toggle()
+        }
       }
-      Button(swipeGestureEnabled ? "Swipe On" : "Swipe Off") {
-        swipeGestureEnabled.toggle()
-      }
-    }
     )
   }
 }
@@ -82,8 +87,6 @@ private struct TabBarView<SelectionType: Hashable & Sendable>: View {
   }
 }
 
-struct TwitterView_Previews: PreviewProvider {
-  static var previews: some View {
-    TwitterView()
-  }
+#Preview {
+  TwitterView()
 }

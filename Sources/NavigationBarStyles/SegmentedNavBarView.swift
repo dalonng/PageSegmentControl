@@ -8,29 +8,29 @@
 import Foundation
 import SwiftUI
 
-internal struct SegmentedNavBarView<SelectionType>: View where SelectionType: Hashable & Sendable  {
-    @Binding private var selection: SelectionType
-    @EnvironmentObject private var pagerSettings: PagerSettings<SelectionType>
+struct SegmentedNavBarView<SelectionType>: View where SelectionType: Hashable & Sendable {
+  @Binding private var selection: SelectionType
+  @EnvironmentObject private var pagerSettings: PagerSettings<SelectionType>
 
-    public init(selection: Binding<SelectionType>) {
-        self._selection = selection
-    }
+  init(selection: Binding<SelectionType>) {
+    self._selection = selection
+  }
 
-    @MainActor var body: some View {
-        if let internalStyle = style as? SegmentedControlStyle {
-            Picker("SegmentedNavBarView", selection: $selection) {
-                if pagerSettings.items.count > 0 && pagerSettings.width > 0 {
-                    ForEach(pagerSettings.itemsOrderedByIndex, id: \.self) { tag in
-                        NavBarItem(id: tag, selection: $selection)
-                            .tag(tag)
-                    }
-                }
-            }
-            .pickerStyle(.segmented)
-            .colorMultiply(internalStyle.backgroundColor)
-            .padding(internalStyle.padding)
+  @MainActor var body: some View {
+    if let internalStyle = style as? SegmentedControlStyle {
+      Picker("SegmentedNavBarView", selection: $selection) {
+        if pagerSettings.items.count > 0 && pagerSettings.width > 0 {
+          ForEach(pagerSettings.itemsOrderedByIndex, id: \.self) { tag in
+            NavBarItem(id: tag, selection: $selection)
+              .tag(tag)
+          }
         }
+      }
+      .pickerStyle(.segmented)
+      .colorMultiply(internalStyle.backgroundColor)
+      .padding(internalStyle.padding)
     }
+  }
 
-    @Environment(\.pagerStyle) var style: PagerStyle
+  @Environment(\.pagerStyle) var style: PagerStyle
 }

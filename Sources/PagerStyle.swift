@@ -89,15 +89,22 @@ extension PagerStyle where Self == BarButtonStyle {
                                @ViewBuilder barBackgroundView: @escaping () -> some View = { EmptyView() },
                                @ViewBuilder indicatorView: @escaping () -> some View = { Rectangle().fill(.blue) }) -> BarButtonStyle
   {
-    return BarButtonStyle(placedInToolbar: placedInToolbar,
-                          pagerAnimationOnTap: pagerAnimationOnTap,
-                          pagerAnimationOnSwipe: pagerAnimationOnSwipe,
-                          tabItemSpacing: tabItemSpacing,
-                          tabItemHeight: tabItemHeight,
-                          scrollable: false,
-                          padding: padding,
-                          indicatorViewHeight: indicatorViewHeight,
-                          barBackgroundView: { AnyView(barBackgroundView()) }, indicatorView: { AnyView(indicatorView()) })
+    return BarButtonStyle(
+      placedInToolbar: placedInToolbar,
+      pagerAnimationOnTap: pagerAnimationOnTap,
+      pagerAnimationOnSwipe: pagerAnimationOnSwipe,
+      tabItemSpacing: tabItemSpacing,
+      tabItemHeight: tabItemHeight,
+      scrollable: false,
+      padding: padding,
+      indicatorViewHeight: indicatorViewHeight,
+      barBackgroundView: {
+        AnyView(barBackgroundView())
+      },
+      indicatorView: {
+        AnyView(indicatorView())
+      }
+    )
   }
 }
 
