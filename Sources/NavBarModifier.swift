@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct NavBarModifier<SelectionType>: ViewModifier where SelectionType: Hashable {
+struct NavBarModifier<SelectionType>: ViewModifier where SelectionType: Hashable & Sendable  {
     @Binding private var selection: SelectionType
 
     public init(selection: Binding<SelectionType>) {
@@ -32,7 +32,7 @@ struct NavBarModifier<SelectionType>: ViewModifier where SelectionType: Hashable
     @Environment(\.pagerStyle) var style: PagerStyle
 }
 
-private struct NavBarWrapperView<SelectionType>: View where SelectionType: Hashable {
+private struct NavBarWrapperView<SelectionType>: View where SelectionType: Hashable & Sendable  {
     @Binding var selection: SelectionType
 
     @MainActor var body: some View {

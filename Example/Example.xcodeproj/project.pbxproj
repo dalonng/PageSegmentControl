@@ -3,10 +3,11 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 60;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		03E11FEC2E274B50007AD8C7 /* PageSegmentControl in Frameworks */ = {isa = PBXBuildFile; productRef = 03E11FEB2E274B50007AD8C7 /* PageSegmentControl */; };
 		28049764295DE1C90086C75D /* PinterestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28049763295DE1C90086C75D /* PinterestView.swift */; };
 		28049766295E0EEA0086C75D /* AudibleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28049765295E0EEA0086C75D /* AudibleView.swift */; };
 		2804976C2981EFB10086C75D /* Color+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2804976B2981EFB10086C75D /* Color+Extensions.swift */; };
@@ -34,23 +35,6 @@
 		E0881C5C26C5836F00768CA7 /* SegmentedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0881C5B26C5836F00768CA7 /* SegmentedView.swift */; };
 		E0881C6026C595AC00768CA7 /* BarStyleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0881C5F26C595AC00768CA7 /* BarStyleView.swift */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		E038BE8F26BF329F00190C12 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = E1F58C3724D083C500A3E642 /* PagerTabStripView.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 28F8287D1C494B2C00330CF4;
-			remoteInfo = PagerTabStripView;
-		};
-		E038BE9126BF329F00190C12 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = E1F58C3724D083C500A3E642 /* PagerTabStripView.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 28F828871C494B2C00330CF4;
-			remoteInfo = PagerTabStripViewTests;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		E1F58C4624D0848100A3E642 /* Embed Frameworks */ = {
@@ -96,7 +80,6 @@
 		C44D9C7427DB56890001CD14 /* CustomStyleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomStyleView.swift; sourceTree = "<group>"; };
 		E0881C5B26C5836F00768CA7 /* SegmentedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentedView.swift; sourceTree = "<group>"; };
 		E0881C5F26C595AC00768CA7 /* BarStyleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarStyleView.swift; sourceTree = "<group>"; };
-		E1F58C3724D083C500A3E642 /* PagerTabStripView.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = PagerTabStripView.xcodeproj; path = ../PagerTabStripView.xcodeproj; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +88,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				ABD7CC7826BC906000BFF5AC /* PagerTabStripView.framework in Frameworks */,
+				03E11FEC2E274B50007AD8C7 /* PageSegmentControl in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -136,7 +120,6 @@
 			isa = PBXGroup;
 			children = (
 				28B743AD2953625A003BCC18 /* Example.entitlements */,
-				E1F58C3724D083C500A3E642 /* PagerTabStripView.xcodeproj */,
 				28574FFF24C21EB200ED22AD /* Shared */,
 				2857500924C21EB400ED22AD /* iOS */,
 				2857501024C21EB400ED22AD /* macOS */,
@@ -275,15 +258,6 @@
 			path = Instagram;
 			sourceTree = "<group>";
 		};
-		E038BE8B26BF329F00190C12 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				E038BE9026BF329F00190C12 /* PagerTabStripView.framework */,
-				E038BE9226BF329F00190C12 /* PagerTabStripViewTests.xctest */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 		E1F58C4124D0848100A3E642 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -319,8 +293,9 @@
 		28574FFB24C21EB200ED22AD /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				BuildIndependentTargetsInParallel = YES;
 				LastSwiftUpdateCheck = 1200;
-				LastUpgradeCheck = 1410;
+				LastUpgradeCheck = 1640;
 				TargetAttributes = {
 					2857500624C21EB400ED22AD = {
 						CreatedOnToolsVersion = 12.0;
@@ -336,37 +311,17 @@
 				Base,
 			);
 			mainGroup = 28574FFA24C21EB200ED22AD;
+			packageReferences = (
+				03E11FEA2E274B50007AD8C7 /* XCLocalSwiftPackageReference "../../PagerTabStripView" */,
+			);
 			productRefGroup = 2857500824C21EB400ED22AD /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = E038BE8B26BF329F00190C12 /* Products */;
-					ProjectRef = E1F58C3724D083C500A3E642 /* PagerTabStripView.xcodeproj */;
-				},
-			);
 			projectRoot = "";
 			targets = (
 				2857500624C21EB400ED22AD /* Example */,
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXReferenceProxy section */
-		E038BE9026BF329F00190C12 /* PagerTabStripView.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = PagerTabStripView.framework;
-			remoteRef = E038BE8F26BF329F00190C12 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		E038BE9226BF329F00190C12 /* PagerTabStripViewTests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = PagerTabStripViewTests.xctest;
-			remoteRef = E038BE9126BF329F00190C12 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		2857500524C21EB400ED22AD /* Resources */ = {
@@ -452,6 +407,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -513,6 +469,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -541,7 +498,7 @@
 				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = iOS/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -553,7 +510,7 @@
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = YES;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 6.0;
 				TARGETED_DEVICE_FAMILY = "1,2,6";
 			};
 			name = Debug;
@@ -571,7 +528,7 @@
 				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = iOS/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -583,7 +540,7 @@
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = YES;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 6.0;
 				TARGETED_DEVICE_FAMILY = "1,2,6";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -611,6 +568,20 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCLocalSwiftPackageReference section */
+		03E11FEA2E274B50007AD8C7 /* XCLocalSwiftPackageReference "../../PagerTabStripView" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = ../../PagerTabStripView;
+		};
+/* End XCLocalSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		03E11FEB2E274B50007AD8C7 /* PageSegmentControl */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = PageSegmentControl;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 28574FFB24C21EB200ED22AD /* Project object */;
 }

@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-internal struct SegmentedNavBarView<SelectionType>: View where SelectionType: Hashable {
+internal struct SegmentedNavBarView<SelectionType>: View where SelectionType: Hashable & Sendable  {
     @Binding private var selection: SelectionType
     @EnvironmentObject private var pagerSettings: PagerSettings<SelectionType>
 

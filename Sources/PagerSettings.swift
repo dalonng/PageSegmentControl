@@ -103,7 +103,7 @@ public enum TransitionProgress<SelectionType: Hashable>: Equatable {
     }
 }
 
-public class PagerSettings<SelectionType>: ObservableObject where SelectionType: Hashable {
+public class PagerSettings<SelectionType>: ObservableObject where SelectionType: Hashable & Sendable  {
 
     @Published var width: CGFloat = 0 {
         didSet {

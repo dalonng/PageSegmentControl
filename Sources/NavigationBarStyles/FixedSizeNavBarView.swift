@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-internal struct FixedSizeNavBarView<SelectionType>: View where SelectionType: Hashable {
+internal struct FixedSizeNavBarView<SelectionType>: View where SelectionType: Hashable & Sendable  {
 
     @Binding private var selection: SelectionType
     @Environment(\.pagerStyle) private var style: PagerStyle

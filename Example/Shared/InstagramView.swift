@@ -55,7 +55,7 @@ struct InstagramView: View {
     }
 }
 
-struct InstagramNavBarItem<SelectionType>: View where SelectionType: Hashable {
+struct InstagramNavBarItem<SelectionType>: View where SelectionType: Hashable & Sendable  {
     @EnvironmentObject private var pagerSettings: PagerSettings<SelectionType>
 
     var image: Image

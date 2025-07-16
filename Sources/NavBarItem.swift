@@ -7,24 +7,23 @@
 
 import SwiftUI
 
-struct NavBarItem<SelectionType>: View, Identifiable where SelectionType: Hashable {
+struct NavBarItem<SelectionType>: View, Identifiable where SelectionType: Hashable & Sendable {
+  var id: SelectionType
+  @Binding private var selection: SelectionType
+  @EnvironmentObject private var pagerSettings: PagerSettings<SelectionType>
 
-    var id: SelectionType
-    @Binding private var selection: SelectionType
-    @EnvironmentObject private var pagerSettings: PagerSettings<SelectionType>
+  init(id: SelectionType, selection: Binding<SelectionType>) {
+    self.id = id
+    self._selection = selection
+  }
 
-    public init(id: SelectionType, selection: Binding<SelectionType>) {
-        self.id = id
-        self._selection = selection
-    }
-
-    @MainActor var body: some View {
-        if let dataItem = pagerSettings.items[id] {
-            dataItem.view
-                .onTapGesture {
-                    selection = id
-                }
-                .accessibilityAddTraits(id == selection ? [.isButton, .isSelected] : .isButton)
+  @MainActor var body: some View {
+    if let dataItem = pagerSettings.items[id] {
+      dataItem.view
+        .onTapGesture {
+          selection = id
         }
+        .accessibilityAddTraits(id == selection ? [.isButton, .isSelected] : .isButton)
     }
+  }
 }
